@@ -20,7 +20,6 @@ public class LogoutPresenter implements LogoutOutputBoundary {
     public LogoutPresenter(ViewManagerModel viewManagerModel,
                           LoggedInViewModel loggedInViewModel,
                            LoginViewModel loginViewModel) {
-        // TODO1 assign to the three instance variables.
 
         this.viewManagerModel = viewManagerModel;
         this.loggedInViewModel = loggedInViewModel;
@@ -37,23 +36,21 @@ public class LogoutPresenter implements LogoutOutputBoundary {
 
         // Update LoggedInState
 
-        // TODO2 have prepareSuccessView update the LoggedInState
-        // 1. get the LoggedInState out of the appropriate View Model,
-        // 2. set the username in the state to the empty string
-        // 3. firePropertyChanged so that the View that is listening is updated.
-
+        // 1. get the LoggedInState out of the appropriate View Model
         LoggedInState loggedInState = loggedInViewModel.getState();
+        // 2. set the username in the state to the empty string
         loggedInState.setUsername("");
+        // 3. firePropertyChanged so that the View that is listening is updated.
         loggedInViewModel.setState(loggedInState);
         loggedInViewModel.firePropertyChange();
 
-        // TODO3 have prepareSuccessView update the LoginState
-        // 1. get the LoginState out of the appropriate View Model,
-        // 2. set the username in the state to be the username of the user that just logged out,
-        // 3. firePropertyChanged so that the View that is listening is updated.
+        // Update LoginState
 
+        // 1. get the LoginState out of the appropriate View Model
         LoginState loginState = loginViewModel.getState();
+        // 2. set the username in the state to be the username of the user that just logged out
         loginState.setUsername(response.getUsername());
+        // 3. firePropertyChanged so that the View that is listening is updated.
         loginViewModel.setState(loginState);
         loginViewModel.firePropertyChange();
 
